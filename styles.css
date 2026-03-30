@@ -46,6 +46,16 @@ header a {
   vertical-align: middle;
 }
 
+.highlight {
+  color: #4CAF50;
+  font-weight: 600;
+}
+
+.highlight1 {
+  color: #222;
+  font-weight: 600;
+}
+
 .showtext {
   display: none;
 }
