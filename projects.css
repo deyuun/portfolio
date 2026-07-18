@@ -273,3 +273,16 @@ footer {
     font-size: 14px;
   }
 }
+
+.status-badge {
+  display: inline-block;
+  background-color: #e6f1d6;
+  color: #2d5016;
+  border: 1px dashed #2d5016;
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  margin-left: 8px;
+  vertical-align: middle;
+}
