@@ -108,7 +108,8 @@ body {
   gap: 2rem;
   grid-template-columns: repeat(6, 1fr);
   grid-template-areas:
-    "c-container c-container js-container js-container python-container python-container ";
+    "c-container c-container js-container js-container typescript-container typescript-container"
+    "python-container python-container python-container python-container python-container python-container";
 }
 
 .main-container.frontend {
@@ -128,7 +129,7 @@ body {
   grid-template-columns: repeat(6, 1fr);
   grid-template-areas:
     "nodejs-container nodejs-container express-container express-container mongoose-container mongoose-container"
-    "jwt-container jwt-container jwt-container jwt-container jwt-container jwt-container"
+    "drizzle-container drizzle-container zod-container zod-container jwt-container jwt-container"
     "flask-container flask-container drf-container drf-container django-container django-container";
 }
 
@@ -138,7 +139,7 @@ body {
   gap: 2rem;
   grid-template-columns: repeat(6, 1fr);
   grid-template-areas:
-    "mongodb-container mongodb-container mongodb-container sqlite-container sqlite-container sqlite-container";
+    "mongodb-container mongodb-container sqlite-container sqlite-container postgresql-container postgresql-container";
 }
 
 .main-container.tools {
@@ -210,8 +211,13 @@ body {
   grid-area: js-container;
 }
 
-.django-container {
+.typescript-container {
   background-color: white;
+  grid-area: typescript-container;
+}
+
+.django-container {
+  background-color: whitge;
   grid-area: django-container;
 }
 
@@ -238,6 +244,11 @@ body {
 .mongodb-container {
   background-color: white;
   grid-area: mongodb-container;
+}
+
+.postgresql-container {
+  background-color: white;
+  grid-area: postgresql-container;
 }
 
 .express-container {
@@ -288,6 +299,16 @@ body {
 .mongoose-container {
   background-color: white;
   grid-area: mongoose-container;
+}
+
+.drizzle-container {
+  background-color: white;
+  grid-area: drizzle-container;
+}
+
+.zod-container {
+  background-color: white;
+  grid-area: zod-container;
 }
 
 .vscode-container {
@@ -403,6 +424,7 @@ footer {
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
       "c-container js-container"
+      "typescript-container typescript-container"
       "python-container python-container";
   }
 
@@ -421,6 +443,7 @@ footer {
     grid-template-areas:
       "nodejs-container express-container"
       "mongoose-container mongoose-container"
+      "drizzle-container zod-container"
       "jwt-container jwt-container"
       "flask-container drf-container"
       "django-container django-container";
@@ -430,7 +453,8 @@ footer {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
-    "mongodb-container sqlite-container";
+      "postgresql-container mongodb-container"
+      "sqlite-container sqlite-container";
   }
 
   .main-container.tools {
@@ -472,6 +496,7 @@ footer {
     grid-template-areas:
       "c-container"
       "js-container"
+      "typescript-container"
       "python-container";
     gap: 1rem;
   }
@@ -492,6 +517,8 @@ footer {
       "nodejs-container"
       "express-container"
       "mongoose-container"
+      "drizzle-container"
+      "zod-container"
       "jwt-container"
       "flask-container"
       "drf-container"
