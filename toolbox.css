@@ -453,7 +453,7 @@ footer {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
-      "postgresql-container mongodb-container"
+      "mongodb-container postgresql-container"
       "sqlite-container sqlite-container";
   }
 
@@ -530,7 +530,8 @@ footer {
     grid-template-columns: 1fr;
     grid-template-areas:
       "mongodb-container"
-      "sqlite-container";
+      "sqlite-container"
+      "postgresql-container";
     gap: 1rem;
   }
 
