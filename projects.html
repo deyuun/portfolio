@@ -41,6 +41,7 @@
 
         <div class="project-card">
           <h3>Job Journal - Full Stack TypeScript Project <span class="status-badge">● DEPLOYED</span></h3>
+          <img src="img/job_journal.png" alt="JobJournal dashboard">
           <p class="project-date">September 2026 - Present</p>
           <p>Job Journal came from wanting a better way to keep track of my own job applications instead of relying on a generic Google Sheet. I built it around the things I actually wanted to see, like where each application is, which ones have gone quiet, and which skills keep appearing across the jobs I apply for. It also became my first project where I worked seriously with TypeScript, PostgreSQL, Drizzle, and Zod, so I got to learn those technologies while building something that is genuinely useful to me.</p>
           <div class="project-btn">
@@ -50,6 +51,11 @@
 
         <div class="project-card">
           <h3>Geo Memory Map - Full Stack MERN Project <span class="status-badge">● DEPLOYED</span></h3>
+          <div class="project-gallery">
+            <img src="img/geomemorymap_login.png" alt="Geo Memory Map login screen">
+            <img src="img/geomemorymap_guest.png" alt="Geo Memory Map guest screen">
+            <img src="img/geomemorymap_place.png" alt="Geo Memory Map places screen">
+          </div>
           <p class="project-date">September 2025 - Present</p>
           <p>Geo Memory Map started as a simple idea to make memories more visual. It became my first real team project as a full-stack developer. I led our group in building an app where users can save photos and locations, then see their memories on an interactive map. It was a huge learning experience and one I’m really proud of</p>
           <div class="project-btn">
@@ -107,9 +113,92 @@
       </div>
   
     </div>
+    <div class="image-lightbox" id="imageLightbox">
+      <button class="lightbox-close" id="lightboxClose">×</button>
 
+      <button class="lightbox-prev" id="lightboxPrev">←</button>
+
+      <img id="lightboxImage" src="" alt="">
+
+      <button class="lightbox-next" id="lightboxNext">→</button>
+    </div>
 
   </main>
+
+  <script>
+    const galleryImages = document.querySelectorAll(".project-gallery img");
+    const jobJournalImage = document.querySelector(".project-card > img");
+
+    const lightbox = document.getElementById("imageLightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const closeButton = document.getElementById("lightboxClose");
+    const previousButton = document.getElementById("lightboxPrev");
+    const nextButton = document.getElementById("lightboxNext");
+
+    let currentImage = 0;
+
+    function showImage(image) {
+      lightboxImage.src = image.src;
+      lightboxImage.alt = image.alt;
+
+      lightbox.classList.add("active");
+
+      previousButton.style.display = "none";
+      nextButton.style.display = "none";
+    }
+
+    function showGalleryImage(index) {
+      currentImage = index;
+
+      lightboxImage.src = galleryImages[currentImage].src;
+      lightboxImage.alt = galleryImages[currentImage].alt;
+
+      lightbox.classList.add("active");
+
+      previousButton.style.display = "block";
+      nextButton.style.display = "block";
+    }
+
+    jobJournalImage.addEventListener("click", () => {
+      showImage(jobJournalImage);
+    });
+
+    galleryImages.forEach((image, index) => {
+      image.addEventListener("click", () => {
+        showGalleryImage(index);
+      });
+    });
+
+    closeButton.addEventListener("click", () => {
+      lightbox.classList.remove("active");
+    });
+
+    previousButton.addEventListener("click", () => {
+      currentImage--;
+
+      if (currentImage < 0) {
+        currentImage = galleryImages.length - 1;
+      }
+
+      showGalleryImage(currentImage);
+    });
+
+    nextButton.addEventListener("click", () => {
+      currentImage++;
+
+      if (currentImage >= galleryImages.length) {
+        currentImage = 0;
+      }
+
+      showGalleryImage(currentImage);
+    });
+
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) {
+        lightbox.classList.remove("active");
+      }
+    });
+  </script>
 </body>
 <footer>
   <p>© 2026 Dean Harley Pal — shipping, mostly on purpose.</p>
