@@ -74,6 +74,11 @@
 
         <div class="project-card">
           <h3>Movy Browser - ReactJS <span class="status-badge">● DEPLOYED</span></h3>
+          <div class="project-gallery">
+            <img src="img/movybrowser_home.png" alt="Movy Browser home screen">
+            <img src="img/movybrowser_movie.png" alt="Movy Browser movie screen">
+            <img src="img/movybrowser_movie_trailer.png" alt="Movy Browser movie trailer screen">
+          </div>
           <p class="project-date">August 2025</p>
           <p>I built Movy Browser to explore how React can be used to create dynamic, interactive web apps. It lets users browse movies, view details, and search across categories—all powered by a TMDB API. Through this project, I got hands-on experience with React Hooks, React Router, and API integration while learning how to organize components and make the UI feel clean and responsive</p>
           <div class="project-btn">
@@ -135,6 +140,7 @@
     const previousButton = document.getElementById("lightboxPrev");
     const nextButton = document.getElementById("lightboxNext");
 
+    let currentGallery = [];
     let currentImage = 0;
 
     function showImage(image) {
@@ -150,8 +156,8 @@
     function showGalleryImage(index) {
       currentImage = index;
 
-      lightboxImage.src = galleryImages[currentImage].src;
-      lightboxImage.alt = galleryImages[currentImage].alt;
+      lightboxImage.src = currentGallery[currentImage].src;
+      lightboxImage.alt = currentGallery[currentImage].alt;
 
       lightbox.classList.add("active");
 
@@ -163,9 +169,13 @@
       showImage(jobJournalImage);
     });
 
-    galleryImages.forEach((image, index) => {
+    galleryImages.forEach((image) => {
       image.addEventListener("click", () => {
-        showGalleryImage(index);
+        const gallery = image.closest(".project-gallery");
+        currentGallery = Array.from(gallery.querySelectorAll("img"));
+        currentImage = currentGallery.indexOf(image);
+
+        showGalleryImage(currentImage);
       });
     });
 
@@ -177,7 +187,7 @@
       currentImage--;
 
       if (currentImage < 0) {
-        currentImage = galleryImages.length - 1;
+        currentImage = currentGallery.length - 1;
       }
 
       showGalleryImage(currentImage);
@@ -186,7 +196,7 @@
     nextButton.addEventListener("click", () => {
       currentImage++;
 
-      if (currentImage >= galleryImages.length) {
+      if (currentImage >= currentGallery.length) {
         currentImage = 0;
       }
 
